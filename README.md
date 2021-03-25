@@ -1,4 +1,4 @@
-## Workshop :: NodeJS and PostgreSQL
+## Workshop :: [NodeJS](https://nodejs.org/en/) and [PostgreSQL](https://www.postgresql.org/)
 
 Step 1 :: Install dependencies
 ```

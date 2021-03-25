@@ -1,5 +1,18 @@
 ## Workshop :: [NodeJS](https://nodejs.org/en/) and [PostgreSQL](https://www.postgresql.org/)
 
+Configuraions
+```
+// Configurations
+$export DB_SCHEMA=postgres
+$export DB_USER=postgres
+$export DB_PASSWORD=
+$export DB_HOST=localhost
+$export DB_PORT=5432
+$export DB_SSL=false
+$export PORT=3000
+
+```
+
 Step 1 :: Install dependencies
 ```
 $npm install

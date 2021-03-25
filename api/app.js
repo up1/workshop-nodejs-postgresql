@@ -1,14 +1,15 @@
 var express = require("express");
 var db = require("./database");
 var app = express();
+app.use(express.json());
 
 app.get("/person/:id", function (req, res) {
   db.Person.findByPk(req.params.id)
     .then((person) => {
-      res.status(200).send(JSON.stringify(person));
+      res.status(200).json(person);
     })
     .catch((err) => {
-      res.status(500).send(JSON.stringify(err));
+      res.status(500).json(err);
     });
 });
 
@@ -19,10 +20,10 @@ app.put("/person", function (req, res) {
     id: req.body.id,
   })
     .then((person) => {
-      res.status(200).send(JSON.stringify(person));
+      res.status(200).json(person);
     })
     .catch((err) => {
-      res.status(500).send(JSON.stringify(err));
+      res.status(500).json(err);
     });
 });
 
@@ -33,20 +34,20 @@ app.delete("/person/:id", function (req, res) {
     },
   })
     .then(() => {
-      res.status(200).send();
+      res.status(200).json({});
     })
     .catch((err) => {
-      res.status(500).send(JSON.stringify(err));
+      res.status(500).json(err);
     });
 });
 
 app.get("/all", function (req, res) {
   db.Person.findAll()
     .then((persons) => {
-      res.status(200).send(JSON.stringify(persons));
+      res.status(200).json(persons);
     })
     .catch((err) => {
-      res.status(500).send(JSON.stringify(err));
+      res.status(500).json(err);
     });
 });
 
@@ -54,10 +55,10 @@ app.get("/ready", function (req, res) {
   db.sequelize
     .authenticate()
     .then(() => {
-      res.status(200).send(JSON.stringify({ ready: true }));
+      res.status(200).json({ ready: true });
     })
     .catch((err) => {
-      res.status(500).send(JSON.stringify({ ready: false, error: err }));
+      res.status(500).json({ ready: false, error: err });
     });
 });
 

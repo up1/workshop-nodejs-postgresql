@@ -31,3 +31,9 @@ Step 6 :: API testing
 * [Postman](https://www.postman.com/)
 * [Newman](https://www.npmjs.com/package/newman)
 
+```
+$newman run postman/docker.postman_collection.json
+```
+
+
+

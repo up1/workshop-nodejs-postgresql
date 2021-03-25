@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+    depends_on:
+      - migrate
+
+  migrate:
+    build: .
+    environment:
+      DB_HOST: db
+    command: sh -c 'sh api/wait-port db 5432 && node api/migrate.js'
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13.2-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"

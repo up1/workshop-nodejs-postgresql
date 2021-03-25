@@ -5,7 +5,7 @@ db.sequelize
   .then(() => {
     db.sequelize
       .sync()
-      // .then(console.log('Migration complete'))
+      // .then(console.log("Migration complete"))
       .catch(console.error);
   })
   .catch(console.error);

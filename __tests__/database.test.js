@@ -1,6 +1,7 @@
 const db = require("../api/database");
 beforeAll(async () => {
   await db.sequelize.sync();
+  await db.Person.destroy({ where: {}, truncate: true });
 });
 test("create person", async () => {
   expect.assertions(1);
@@ -29,5 +30,6 @@ test("delete person", async () => {
   expect(person).toBeNull();
 });
 afterAll(async () => {
+  await db.Person.destroy({ where: {}, truncate: true });
   await db.sequelize.close();
 });
